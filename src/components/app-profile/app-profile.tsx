@@ -9,7 +9,6 @@ export class AppProfile {
 
   @State() state = false;
   @Prop() name: string;
-
   @State() mediaStream = null;
 
   formattedName(): string {
@@ -19,18 +18,77 @@ export class AppProfile {
     return '';
   }
 
-  startVideoStream(): any {
-    navigator.mediaDevices.getUserMedia({ audio: true, video: true })
-      .then((stream) => {
-        this.mediaStream = stream;
-        var player = document.querySelector('video');
-        player.srcObject = stream;
+  getUserMedia(options, successCallback, failureCallback) {
+    var api = navigator.getUserMedia || navigator['webkitGetUserMedia'] ||
+      navigator['mozGetUserMedia'] || navigator['msGetUserMedia'];
+    if (api) {
+      return api.bind(navigator)(options, successCallback, failureCallback);
+    }
+  }
+  
+  @State() pc1: any;
+  @State() pc2: any;
+  @State() theStreamB: any;
+  
+  getStream() {
+    if (!navigator.getUserMedia && !navigator['webkitGetUserMedia'] &&
+      !navigator['mozGetUserMedia'] && !navigator['msGetUserMedia']) {
+      alert('User Media API not supported.');
+      return;
+    }
+    
+    const constraints = {
+      video: true
+    };
 
-        // const peerConnection = new RTCPeerConnection();
-      })
-      .catch((err) => {
-        console.error(err);
-      })
+    this.getUserMedia(constraints, (stream: any) => {
+      this.addStreamToVideoTag(stream, 'localVideo');
+  
+      // RTCPeerConnection is prefixed in Blink-based browsers.
+      window['RTCPeerConnection'] = window['RTCPeerConnection'] || window['webkitRTCPeerConnection'];
+      this.pc1 = new RTCPeerConnection(null);
+      this.pc1.addStream(stream);
+      this.pc1.onicecandidate = event => {
+        if (event.candidate == null) return;
+        this.pc2.addIceCandidate(new RTCIceCandidate(event.candidate));
+      };
+  
+      this.pc2 = new RTCPeerConnection(null);
+      this.pc2.onaddstream = event => {
+        this.theStreamB = event.stream;
+        this.addStreamToVideoTag(event.stream, 'remoteVideo');
+      };
+      this.pc2.onicecandidate = event => {
+        if (event.candidate == null) return;
+        this.pc1.addIceCandidate(new RTCIceCandidate(event.candidate));
+      };
+  
+      this.pc1.createOffer({offerToReceiveVideo: 1})
+        .then(desc => {
+          this.pc1.setLocalDescription(desc);
+          this.pc2.setRemoteDescription(desc);
+          return this.pc2.createAnswer({offerToReceiveVideo: 1});
+        })
+        .then(desc => {
+          this.pc1.setRemoteDescription(desc);
+          this.pc2.setLocalDescription(desc);
+        })
+        .catch(err => {
+          console.error('createOffer()/createAnswer() failed ' + err);
+        });
+    }, function (err) {
+      alert('Error: ' + err);
+    });
+  }
+  
+  addStreamToVideoTag(stream, tag) {
+    var mediaControl: any = document.getElementById(tag);
+    if ('srcObject' in mediaControl) {
+      mediaControl.srcObject = stream;
+      mediaControl.src = (window.URL || window['webkitURL']).createObjectURL(stream);
+    } else if (navigator['mozGetUserMedia']) {
+      mediaControl.mozSrcObject = stream;
+    }
   }
 
   render() {
@@ -56,8 +114,9 @@ export class AppProfile {
             onIonChange={ev => (this.state = ev.detail.checked)}
           />
         </ion-item>
-        <ion-button onClick={() => this.startVideoStream()}>Start Stream</ion-button>
-        <video width="320" height="240" autoPlay controls></video>
+        <ion-button onClick={() => this.getStream()}>Start Stream</ion-button>
+        <video autoplay id="remoteVideo" style={{"height":"180px", "width": "240px"}}></video>
+        <video autoplay id="localVideo" style={{"height":"180px", "width": "240px"}}></video>
       </ion-content>
     ];
   }
