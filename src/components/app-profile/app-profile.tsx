@@ -14,6 +14,7 @@ export class AppProfile {
 
   componentDidLoad() {
     this.videoElement = document.querySelector("video");
+    this.streamingService.init();
   }
 
   startLiveStream() {
@@ -22,7 +23,7 @@ export class AppProfile {
         this.mediaStream = stream;
         this.videoElement.srcObject = this.mediaStream;
         // Begin Streaming To Server
-        this.streamingService.startStreaming(this.mediaStream);
+        this.streamingService.startStream(this.mediaStream);
         this.streaming = true;
       },
       (error: MediaStreamError) => {
@@ -38,7 +39,7 @@ export class AppProfile {
 
   stopLiveStream() {
     if (this.mediaStream) {
-      this.streamingService.stopStreaming();
+      this.streamingService.endStream();
       this.mediaStream.getTracks().forEach(track => track.stop());
       this.streaming = false;
     }
