@@ -17,8 +17,7 @@ export class AppProfile {
   }
 
   startLiveStream() {
-    navigator.getUserMedia(
-      { audio: true, video: true },
+    navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(
       (stream: MediaStream) => {
         this.mediaStream = stream;
         this.videoElement.srcObject = this.mediaStream;
@@ -38,7 +37,7 @@ export class AppProfile {
   }
 
   stopLiveStream() {
-    if(this.mediaStream) {
+    if (this.mediaStream) {
       this.streamingService.stopStreaming();
       this.mediaStream.getTracks().forEach(track => track.stop());
       this.streaming = false;
@@ -46,7 +45,7 @@ export class AppProfile {
   }
 
   onStreamButtonClick() {
-    if(this.streaming == false) {
+    if (this.streaming == false) {
       this.startLiveStream();
     } else {
       this.stopLiveStream();

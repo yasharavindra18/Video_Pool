@@ -1,34 +1,40 @@
-import axios, { AxiosInstance } from 'axios';
-
 export class StreamingService {
 
-  private axiosInstance: AxiosInstance = axios.create({
-    baseURL: "http://localhost:3000/api",
-    timeout: 10000
-  });
+  private mediaRecorder: MediaRecorder;
 
   public startStreaming(localStream: MediaStream) {
-    const mediaRecorder = new MediaRecorder(localStream);
-    mediaRecorder.ondataavailable = (event: BlobEvent) => {
-      console.log(event.data.size);
+    this.mediaRecorder = new MediaRecorder(localStream);
+    this.mediaRecorder.ondataavailable = (event: BlobEvent) => {
       // Stream the blob to server
+      this.pushToServer(event.data);
     };
-    mediaRecorder.start(100);
+    this.mediaRecorder.start(100);
   }
 
-  private pushToServer(blob: Blob){
-      const data = new FormData();
-      data.append('file', blob);
-    
-      return this.axiosInstance.post(`/livestream`, data, {
-        headers: {
-          'Content-Type': `multipart/form-data; boundary=${blob.size}`,
-        },
-        timeout: 30000,
+  private pushToServer(blob: Blob) {
+    // Create Blob from Data
+    const data = new FormData();
+    data.append('video', blob, 'sender_id');
+    // Generate Headers
+    const headers = new Headers();
+    // Multipart chunked uploads commented out for now until fixed
+    // headers.append('Content-Type', `multipart/form-data; boundary=`);
+
+    // Push Chunk to Server
+    fetch('http://localhost:3000/api/video/upload', {
+      method: "POST",
+      headers: headers,
+      body: data
+    }).then(
+      response => {
+        console.log(response);
+      },
+      error => {
+        console.error(error);
       });
   }
 
   public stopStreaming() {
-    // this.connection.close();
+    this.mediaRecorder.stop();
   }
 }
