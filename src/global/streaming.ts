@@ -20,7 +20,7 @@ export class StreamingService {
   private startTimestamp: number;
 
   init() {
-    this.socket = io('http://192.168.43.144:3000');
+    this.socket = io('https://hci.yasithmilinda.me');
 
     // When connection established
     this.socket.on('connect', () => {
