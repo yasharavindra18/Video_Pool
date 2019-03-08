@@ -16,7 +16,7 @@ export class StreamingService {
 
   private mediaRecorder: MediaRecorder;
   private socket: SocketIOClient.Socket;
-  private event: Event = {id: 1};
+  private event: Event = { id: 1 };
   private startTimestamp: number;
 
   init() {
@@ -54,24 +54,24 @@ export class StreamingService {
 
   public startStream(localStream: MediaStream) {
     this.mediaRecorder = new MediaRecorder(localStream);
-    
+
     // On Start
     this.mediaRecorder.onstart = () => {
       console.log('Stream Started');
       this.startTimestamp = Date.now();
-      this.send({event: this.event, start: true, end: false, begin: this.startTimestamp});
+      this.send({ event: this.event, start: true, end: false, begin: this.startTimestamp });
     }
 
     // On Chunk Available
     this.mediaRecorder.ondataavailable = (event: BlobEvent) => {
       console.log('Stream Data Available');
-      this.send({event: this.event, start: false, end: false, data: event.data});
+      this.send({ event: this.event, start: false, end: false, data: event.data });
     };
 
     // On Stop
     this.mediaRecorder.onstop = () => {
       console.log('Stream Ended');
-      this.send({event: this.event, start: false, end: true});
+      this.send({ event: this.event, start: false, end: true });
     }
 
     // Start Recording
