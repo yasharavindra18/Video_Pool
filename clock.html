@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/w3css/3/w3.css">
+
+<head><title>Clock</title>
+    
+    <style>
+        .heading {
+            font-style: italic;
+            font-size: 24px;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid #e7e7e7;
+            background-color: #f3f3f3;
+        }
+
+        li {
+            float: left;
+        }
+
+            li a {
+                display: block;
+                color: #666;
+                font-size:25px;
+                text-align: center;
+                padding: 14px 66px;
+                text-decoration: none;
+            }
+
+                li a:hover:not(.active) {
+                    background-color: #ddd;
+                }
+
+                li a.active {
+                    color: white;
+                    background-color: #4CAF50;
+                }
+    </style>
+    </head>
+    <body>
+
+        <ul>
+            <li><a href="description.html">Description</a></li>
+            <li><a href="Instructions.html">Instructions</a></li>
+            <li><a href="prototype.html">Prototype</a></li>
+        </ul>
+        <br/>
+
+        <div class="heading">
+            <center><h1>Clock Prototype</h1></center>
+        </div>
+        <br />
+        <!-- Slide Show -->
+        <section>
+            <center>
+                <img class="mySlides" src="assets/b974d85fbf8a44e124e965acd8c90cb6.png"
+                     style="width:20%">
+                <img class="mySlides" src="assets/235e9e07f73ea7745d8e966b007c30de.png"
+                     style="width:20%">
+                <img class="mySlides" src="assets/6e1ae00990ea2ba8faf2f684fa15ced7.png"
+                     style="width:20%">
+                <img class="mySlides" src="assets/8ae68b5fa5b60f1d9b91077052ae1a36.png"
+                     style="width:20%">
+            </center>
+        </section>
+
+
+
+        
+
+        <script>
+            // Automatic Slideshow - change image every 3 seconds
+            var myIndex = 0;
+            carousel();
+
+            function carousel() {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                myIndex++;
+                if (myIndex > x.length) { myIndex = 1 }
+                x[myIndex - 1].style.display = "block";
+                setTimeout(carousel, 3000);
+            }
+        </script>
+
+    </body>
+
+
