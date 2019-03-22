@@ -1,3 +1,3 @@
-Submission by:  
+Submission by:
 Yasha Ravindra   
 Christian Hawkes   
