@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">CameraHCI</string>
+    <string name="button_label_camera">Camera</string>
+    <string name="button_label_Location">Location</string>
+    <string name="button_label_ShowMap">MAP</string>
+    <string name="text_Default_Locations">Fetching Locations</string>
+    <string name="toast_camera">Opening Camera</string>
+    <string name="toast_location">Finding GPS Co-ordinates</string>
+    <string name="button_label_record">Record</string>
+    <string name="button_label_SwitchCamera">Switch</string>
+    <string name="toast_Record_Start">Starting recording</string>
+    <string name="toast_Switch_camera">Switching Camera</string>
+    <string name="toast_Event_Record">In Event</string>
+    <string name="permission_camera_rationale">Camera permission is needed to show the camera preview.</string>
+    <string name="button_label_ok">OK</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="Google_Maps_API_KEY">AIzaSyDzheQacaTPd9vweJT4pIOgmyWNWdJDl4I</string>
+</resources>
