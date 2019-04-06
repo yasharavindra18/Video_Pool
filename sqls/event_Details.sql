@@ -17,3 +17,4 @@ INSERT INTO events_list(event_name, latitude, longitude, description ) VALUES('E
 INSERT INTO events_list(event_name, latitude, longitude, description ) VALUES('Event4', '48.1432', '77.1372','Event 4 happening');
 INSERT INTO events_list(event_name, latitude, longitude, description ) VALUES('Event5', '57.7432', '17.3376','Event 5 happening');
 INSERT INTO events_list(event_name, latitude, longitude, description ) VALUES('Event6', '41.1432', '77.8675','Event 6 happening');
+INSERT INTO events_list(event_name, latitude, longitude, description ) VALUES('Event7', '49.6987', '71.3258','Event 7 happening');
