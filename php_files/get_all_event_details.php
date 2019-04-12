@@ -1,6 +1,10 @@
 <?php
 /*
+<<<<<<< HEAD
+ * Following code will list all the Events
+=======
  * Following code will list all the products
+>>>>>>> 04d8c0e6b216ae548038dcaebbee14378a80df8a
  */
  
 // array for JSON response

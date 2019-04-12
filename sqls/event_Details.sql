@@ -1,7 +1,13 @@
 /*Create Events table*/
 
+<<<<<<< HEAD
+CREATE TABLE IF NOT EXISTS events_list(
+id int(11) primary key auto_increment,
+event_id varchar(100) not null,
+=======
 CREATE TABLE events_list(
 id int(11) primary key auto_increment,
+>>>>>>> 04d8c0e6b216ae548038dcaebbee14378a80df8a
 event_name varchar(100) not null,
 latitude varchar(100) not null,
 longitude varchar(100) not null,
@@ -9,6 +15,8 @@ description text,
 created_at timestamp default now(),
 updated_at timestamp 
 );
+<<<<<<< HEAD
+=======
 
 /* Inserting dummy data */
 INSERT INTO events_list(event_name, latitude, longitude, description ) VALUES('Event1', '43.5432', '87.5371','Event 1 happening');
@@ -18,3 +26,4 @@ INSERT INTO events_list(event_name, latitude, longitude, description ) VALUES('E
 INSERT INTO events_list(event_name, latitude, longitude, description ) VALUES('Event5', '57.7432', '17.3376','Event 5 happening');
 INSERT INTO events_list(event_name, latitude, longitude, description ) VALUES('Event6', '41.1432', '77.8675','Event 6 happening');
 INSERT INTO events_list(event_name, latitude, longitude, description ) VALUES('Event7', '49.6987', '71.3258','Event 7 happening');
+>>>>>>> 04d8c0e6b216ae548038dcaebbee14378a80df8a
