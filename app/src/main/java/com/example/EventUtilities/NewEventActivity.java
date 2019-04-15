@@ -42,7 +42,8 @@ public class NewEventActivity extends AppCompatActivity {
     //String url =
 
     // JSON Node names
-    private static final String TAG_SUCCESS = "success";
+//    private static final String TAG_SUCCESS = "success";
+    private static final String TAG_SUCCESS = "status";
 //    private static final String TAG_EventName = "event_name";
 //    private static final String TAG_EventDescription = "event_description";
 //    private static final String TAG_EventPlace = "event_place";
@@ -117,11 +118,14 @@ public class NewEventActivity extends AppCompatActivity {
             Map<String,String> params = new HashMap<String, String>();
 
             //add values according to key
-            params.put("event_name",EventName);
+//            params.put("event_name",EventName);
+//            params.put("event_description",EventDescription);
+//            params.put("event_place",EventPlace);
+//            params.put("event_lat",Current_Lat);
+//            params.put("event_long",Current_Long);
+            params.put("eventName",EventName);
+            params.put("location",Current_Lat+','+Current_Long);
             params.put("event_description",EventDescription);
-            params.put("event_place",EventPlace);
-            params.put("event_lat",Current_Lat);
-            params.put("event_long",Current_Long);
 
             // getting JSON Object
             // Note that create product url accepts POST method
@@ -132,9 +136,11 @@ public class NewEventActivity extends AppCompatActivity {
             Log.d("Create Response", json.toString());
             // check for success tag
             try {
-                int success = json.getInt(TAG_SUCCESS);
+//                int success = json.getInt(TAG_SUCCESS);
+                String success = json.getString(TAG_SUCCESS);
 
-                if (success == 1) {
+//                if (success == 1) {
+                if (success.contains("New Event Created!")) {
                     // successfully created Event, Redirect to Maps Activity
                     //Toast tst = Toast.makeText(this, R.string.tst_EventCreationFailed, Toast.LENGTH_SHORT);
                     tstmsg = String.valueOf(R.string.tst_EventCreationSuccess);

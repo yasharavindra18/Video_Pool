@@ -20,6 +20,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import static com.example.Utilities.config.url_get_all_events;
+
 public class EventsData extends AsyncTask<String, String, String> {
     //ProgressDialog pdLoading = new ProgressDialog(GetHomes.this);
     HttpURLConnection conn;
@@ -46,7 +48,9 @@ public class EventsData extends AsyncTask<String, String, String> {
     protected String doInBackground(String... params) {
         try {
             // Enter URL address where your php file resides
-            url = new URL("http://qav2.cs.odu.edu/swaroop/HCI/getEvents.php");
+            // url = new URL("http://qav2.cs.odu.edu/swaroop/HCI/getEvents.php");
+            url = new URL(url_get_all_events);
+
 
         } catch (MalformedURLException e) {
             // TODO Auto-generated catch block
@@ -57,8 +61,8 @@ public class EventsData extends AsyncTask<String, String, String> {
 
             // Setup HttpURLConnection class to send and receive data from php
             conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("POST");
-
+            // conn.setRequestMethod("POST");
+            conn.setRequestMethod("GET");
 
             // setDoInput and setDoOutput method depict handling of both send and receive
             conn.setDoInput(true);
@@ -66,8 +70,10 @@ public class EventsData extends AsyncTask<String, String, String> {
 
             // Append parameters to URL
             Uri.Builder builder = new Uri.Builder()
-                    .appendQueryParameter("latitude", params[0])
-                    .appendQueryParameter("longitude", params[1]);
+                    // .appendQueryParameter("latitude", params[0])
+                    // .appendQueryParameter("longitude", params[1]);
+                    .appendQueryParameter("lat", params[0])
+                    .appendQueryParameter("lng", params[1]);
             String query = builder.build().getEncodedQuery();
 
             // Open connection for sending data
@@ -134,10 +140,14 @@ public class EventsData extends AsyncTask<String, String, String> {
             longs.clear();
             for(int i =0;i<houses.length();i++){
                 JSONObject c = houses.getJSONObject(i);
-                lats.add(c.getString("Event_lat"));
-                longs.add(c.getString("Event_long"));
-                rec.add(c.getString("Event_Name"));
-                id.add(c.getString("id"));
+                // lats.add(c.getString("Event_lat"));
+                // longs.add(c.getString("Event_long"));
+                // rec.add(c.getString("Event_Name"));
+                // id.add(c.getString("id"));
+                lats.add(c.getString("location").split(",")[0]);
+                longs.add(c.getString("location").split(",")[1]);
+                rec.add(c.getString("eventName"));
+                id.add(c.getString("eventId"));
             }
 //            mCallback.onTaskComplete(lats);
             Log.i("result", lats.toString());
