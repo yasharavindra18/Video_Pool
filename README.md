@@ -1,13 +1,19 @@
-Android Application
+# Mobile Application
 
-Following Features
-<<<<<<< HEAD
-- Android Project Files : android_project\Location_Integration
-=======
-- Android Project Files : android_project\CameraHCI
->>>>>>> 04d8c0e6b216ae548038dcaebbee14378a80df8a
-- php Files : php_files/
-- SQLs : sqls/
+## Technologies Used
+* Application - Android
+* Test Server - PHP
+* Test DB - MySQL
 
-need to execute sqls before buliding the android project
+## Test Environment Resources
+* PHP files to host on server - in folder php_files/
+* SQL files to initialize the test DB - in folder sqls/
 
+## Steps to run app in Test Mode
+* Host the PHP files either 1) using Docker or 2) on an actual server (already hosted)
+* Run a MySQL server either 1) using Docker or 2) on an actual server (already hosted)
+* Run app on the same network as the servers so that the URLs are resolvable
+
+## Steps to run app in Production Mode
+* Update the API endpoints to point to the production server (TODO)
+* Run app on any network with internet
