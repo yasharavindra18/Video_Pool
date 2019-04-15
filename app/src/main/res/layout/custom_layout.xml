@@ -25,7 +25,8 @@
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_gravity="center"-->
         <!--android:text="Record Video"-->
-        <!--android:textAlignment="center" />-->
+        <!--android:textAlignment="center"-->
+        <!--android:onClick="openCamera"/>-->
 
 
 </LinearLayout>

@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.EventUtilities.NewEventActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -41,7 +42,19 @@ import static com.example.hci.EventsData.rec;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
+    // adding logger to the code
+    private static final String LOG_TAG =
+            MapsActivity.class.getSimpleName();
+
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 5445;
+
+
+    private static String[] PERMISSIONS_CAMERA = {Manifest.permission.CAMERA,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.RECORD_AUDIO};
+
+    private static final int REQUEST_CAMERA = 0;
+
 
     private GoogleMap googleMap;
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -49,6 +62,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Location currentLocation;
     private boolean firstTimeFlag = true;
     public Marker marker[] = null;
+
+    String latitude_current = "";//String.valueOf(currentLocation.getLatitude());
+    String longitude_current = "";//String.valueOf(currentLocation.getLongitude());
+    //currentLocation = locationResult.getLastLocation();
 
     private final View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
@@ -71,8 +88,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 firstTimeFlag = false;
             }
             //showMarker(currentLocation);
-            String latitude_current = String.valueOf(currentLocation.getLatitude());
-            String longitude_current = String.valueOf(currentLocation.getLongitude());
+            latitude_current = String.valueOf(currentLocation.getLatitude());
+            longitude_current = String.valueOf(currentLocation.getLongitude());
             new EventsData().execute(latitude_current,longitude_current);
 
             //startService(new Intent(MapsActivity.this, MyService.class));
@@ -158,7 +175,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // MarkerAnimation.animateMarkerToGB(currentLocationMarker, latLng, new LatLngInterpolator.Spherical());
     }
 //--------------------------Markers----------------------------------------------------//
-
+//-----------------open Camera on clicking on record video button ----------------------//
+//--------------------------------------------------------------------------------------//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -259,11 +277,67 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         googleMap = null;
     }
 
+    /*
+    * This function opens camera on clicking on the event*/
     @Override
     public void onInfoWindowClick(Marker marker) {
         Log.i("result1", marker.getSnippet());
+        Log.i("Opening camera", marker.getSnippet());
+        Log.d(LOG_TAG, "--> Camera Button clicked! Checking for camera permissions");
+
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)!= PackageManager.PERMISSION_GRANTED){
+            //Camera Permission has not been Granted so throw a snackbar saying that we need a permission
+            requestCameraPermission();
+        }else {
+            Log.d(LOG_TAG, "--> Clicked on record view, fetching Events");
+            Intent intnt = new Intent(this, MainActivity.class);
+            intnt.putExtra("EventName", marker.getTitle().toString());
+            intnt.putExtra("EventID", marker.getId().toString());
+            intnt.putExtra("Event_Lat",marker.getPosition().latitude);
+            intnt.putExtra("Event_Long",marker.getPosition().longitude);
+            startActivity(intnt);
+        }
     }
 
+
+    /**
+     * Requests the Camera permission.
+     * If the permission has been denied previously, a SnackBar will prompt the user to grant the
+     * permission, otherwise it is requested directly.
+     */
+    private void requestCameraPermission() {
+        Log.i(LOG_TAG, "--> There were No Camera Permissions granted so Proceeding further by asking user to grant permission");
+        // BEGIN_INCLUDE(camera_permission_request)
+        // Camera permission has not been granted yet. Request it directly.
+        ActivityCompat.requestPermissions(this,
+                PERMISSIONS_CAMERA,
+                REQUEST_CAMERA);
+        // END_INCLUDE(camera_permission_request)
+    }
+
+
+    // Add NEw Events
+    public void addEvent(View view) {
+        if (view.getId() == R.id.addEventImageButton)
+            Log.i(LOG_TAG, "Clicked on add Event button");
+        //mLocationCallback.onLocationResult();
+        //String current
+        Intent intnt = new Intent(this, NewEventActivity.class);
+        intnt.putExtra("current_lat",latitude_current);
+        intnt.putExtra("current_long",longitude_current);
+        startActivity(intnt);
+
+    }
+/*
+    public void openCamera(View view) {
+        Log.i("opening Camera","Opening Camera");
+        Intent intnt = new Intent(this, MainActivity.class);
+        startActivity(intnt);
+
+    }
+*/
 
 
    /* @Override

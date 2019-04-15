@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">HCI</string>
+    <string name="label_Event_name">Event Name</string>
+    <string name="label_Event_Description">Description</string>
+    <string name="button_label_AddEvent">Create Event</string>
+    <string name="addEventHint">Please Enter Event Name</string>
+    <string name="addDescriptionHint">Please Enter Description of the Event</string>
+    <string name="defaultPlaces">Please select place of the Event</string>
+    <string name="UnsuccessfulResponse">Unsuccessful with response :</string>
+    <string name="tst_EventCreationFailed">Event Creation Failed</string>
+    <string name="tst_EventCreationSuccess">Successfully Created Event</string>
 </resources>
