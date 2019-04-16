@@ -9,12 +9,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -23,14 +20,14 @@ import java.util.ArrayList;
 import static com.example.Utilities.config.url_get_all_events;
 
 public class EventsData extends AsyncTask<String, String, String> {
-    //ProgressDialog pdLoading = new ProgressDialog(GetHomes.this);
-    HttpURLConnection conn;
-    private TaskCompleted mCallback;
-    URL url = null;
     public final static ArrayList<String> rec = new ArrayList<String>();
     public final static ArrayList<String> lats = new ArrayList<String>();
     public final static ArrayList<String> longs = new ArrayList<String>();
     public final static ArrayList<String> id = new ArrayList<String>();
+    //ProgressDialog pdLoading = new ProgressDialog(GetHomes.this);
+    HttpURLConnection conn;
+    URL url = null;
+    private TaskCompleted mCallback;
 
     //this method will interact with UI, here display loading message
     @Override
@@ -127,7 +124,7 @@ public class EventsData extends AsyncTask<String, String, String> {
             JSONArray events = new JSONArray(result);
             lats.clear();
             longs.clear();
-            for(int i =0;i<events.length();i++){
+            for (int i = 0; i < events.length(); i++) {
                 JSONObject c = events.getJSONObject(i);
                 // lats.add(c.getString("Event_lat"));
                 // longs.add(c.getString("Event_long"));

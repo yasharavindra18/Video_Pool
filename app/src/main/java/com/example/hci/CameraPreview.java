@@ -1,10 +1,7 @@
 package com.example.hci;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Camera;
 import android.util.Log;
-import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 

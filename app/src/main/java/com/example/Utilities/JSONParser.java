@@ -31,15 +31,14 @@ public class JSONParser {
     static String json = "";
     static HttpURLConnection conn;
     static URL url = null;
-
-    // Video related variables
-    int bytesRead, bytesAvailable, bufferSize;
     static String boundary = "*****";
     static String filepath = "";
     static String fileName = "";
     static String eventId = "";
     static String lineEnd = "\r\n";
     static String twoHyphens = "--";
+    // Video related variables
+    int bytesRead, bytesAvailable, bufferSize;
     byte[] buffer;
     // setting maximum size of video
     int maxBufferSize = 50 * 1024 * 1024;
@@ -51,11 +50,13 @@ public class JSONParser {
 
     // function get json from url
     // by making HTTP POST or GET method
+
     /**
-     public JSONObject makeHttpRequest(String url_link, String method,
-     List<NameValuePair> params) {*/
+     * public JSONObject makeHttpRequest(String url_link, String method,
+     * List<NameValuePair> params) {
+     */
     public JSONObject makeHttpRequest(String url_link, String method,
-                                      Map<String,String> params) {
+                                      Map<String, String> params) {
         // Making HTTP request
         try {
             // Enter URL address where your php file resides
@@ -66,7 +67,7 @@ public class JSONParser {
             conn.setConnectTimeout(CONNECTION_TIMEOUT);
 
             // check for request method
-            if(method == "POST"){
+            if (method == "POST") {
                 // request method is POST
                 // defaultHttpClient
                 /**
@@ -81,15 +82,15 @@ public class JSONParser {
                 // setDoInput and setDoOutput method depict handling of both send and receive
                 conn.setDoInput(true);
                 conn.setDoOutput(true);
-                conn.setRequestMethod( "POST" );
-                conn.setUseCaches( false );
+                conn.setRequestMethod("POST");
+                conn.setUseCaches(false);
 
                 // Append parameters to URL
                 Uri.Builder builder = new Uri.Builder();
-                if(!params.isEmpty()) {
+                if (!params.isEmpty()) {
                     //int i = params.size();
                     // Iterate over map to set the values
-                    for (String i : params.keySet()){
+                    for (String i : params.keySet()) {
                         builder.appendQueryParameter(i, params.get(i));
                     }
                     String query = builder.build().getEncodedQuery();
@@ -105,7 +106,7 @@ public class JSONParser {
                 } else {
                     // Code if the params are empty ---- to be written
                 }
-            }else if(method == "GET"){
+            } else if (method == "GET") {
                 // request method is GET
                 /**
                  DefaultHttpClient httpClient = new DefaultHttpClient();
@@ -124,17 +125,17 @@ public class JSONParser {
                 conn.setDoOutput(true);
 
 
-            }else if(method == "VIDEO"){
+            } else if (method == "VIDEO") {
 
                 // All video uploads are handled here
 
                 //Read input file
-                if(!params.isEmpty()) {
+                if (!params.isEmpty()) {
                     filepath = params.get("filepath");
                     fileName = params.get("fileName");
                     eventId = params.get("event_id");
                 }
-                File sourceFile = new File(filepath+fileName);
+                File sourceFile = new File(filepath + fileName);
                 FileInputStream fileInputStream = new FileInputStream(sourceFile);
                 //set connection properties
                 conn.setDoInput(true);
@@ -149,7 +150,7 @@ public class JSONParser {
                 //OutputStream os = new
                 dos.writeBytes(twoHyphens + boundary + lineEnd);
                 //dos.writeBytes("Content-Disposition: form-data; name=\"event_id\"" +lineEnd + lineEnd + eventId + lineEnd + "; name=\"filename\"; filename=\"" + fileName + "\"" + lineEnd);
-                dos.writeBytes("Content-Disposition: form-data; name=\"event_id\"" +lineEnd + lineEnd + eventId + lineEnd);
+                dos.writeBytes("Content-Disposition: form-data; name=\"event_id\"" + lineEnd + lineEnd + eventId + lineEnd);
                 dos.writeBytes(twoHyphens + boundary + lineEnd);
                 dos.writeBytes("Content-Disposition: form-data; name=\"filename\"; filename=\"" + fileName + "\"" + lineEnd);
                 dos.writeBytes(lineEnd);
@@ -203,7 +204,7 @@ public class JSONParser {
                 json = sb.toString();
             } else {
                 json = UNSUCCESSFUL_MESSAGE + response_code;
-                Log.e("RESPONSE CODE ERROR",  response_code+"please check the url");
+                Log.e("RESPONSE CODE ERROR", response_code + "please check the url");
             }
 
         } catch (Exception e) {
@@ -215,8 +216,7 @@ public class JSONParser {
             jObj = new JSONObject(json);
         } catch (JSONException e) {
             Log.e("JSON Parser", "Error parsing data " + e.toString());
-        }
-        finally {
+        } finally {
             //Disconnect the stream after conversion is complete
             conn.disconnect();
         }

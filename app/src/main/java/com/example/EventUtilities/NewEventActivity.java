@@ -4,8 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,8 +15,6 @@ import android.widget.Toast;
 import com.example.Utilities.JSONParser;
 import com.example.hci.MapsActivity;
 import com.example.hci.R;
-import static com.example.Utilities.config.url_create_event;
-import static com.example.hci.R.string.tst_EventCreationSuccess;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,15 +22,16 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.example.Utilities.config.url_create_event;
+
 
 public class NewEventActivity extends AppCompatActivity {
 
+    // JSON Node names
+//    private static final String TAG_SUCCESS = "success";
+    private static final String TAG_SUCCESS = "status";
     //Create JSON Parser
     JSONParser jsonParser = new JSONParser();
-
-    // Progress Dialog
-    private ProgressDialog pDialog;
-
     //Edit Text
     EditText In_eventName;
     EditText In_eventDescription;
@@ -40,17 +39,14 @@ public class NewEventActivity extends AppCompatActivity {
 
     //URL
     //String url =
-
-    // JSON Node names
-//    private static final String TAG_SUCCESS = "success";
-    private static final String TAG_SUCCESS = "status";
+    //Latitude and longitude Strings
+    String Current_Lat = "";
 //    private static final String TAG_EventName = "event_name";
 //    private static final String TAG_EventDescription = "event_description";
 //    private static final String TAG_EventPlace = "event_place";
-
-    //Latitude and longitude Strings
-    String Current_Lat = "";
     String Current_Long = "";
+    // Progress Dialog
+    private ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,12 +78,13 @@ public class NewEventActivity extends AppCompatActivity {
 
     /**
      * Background Async Task to Create new Event
-     * */
-    class addNewEvent extends AsyncTask<String, String, String>{
+     */
+    class addNewEvent extends AsyncTask<String, String, String> {
         /**
          * Before starting background thread Show Progress Dialog
-         * */
+         */
         public String tstmsg = "";
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -97,12 +94,14 @@ public class NewEventActivity extends AppCompatActivity {
             pDialog.setCancelable(true);
             pDialog.show();
         }
+
         /**
          * Creating product
-         * */
+         */
         @SuppressLint("WrongThread")
         protected String doInBackground(String... args) {
-            String EventName = In_eventName.getText().toString();;
+            String EventName = In_eventName.getText().toString();
+            ;
             String EventDescription = In_eventDescription.getText().toString();
             String EventPlace = In_eventPlace.getText().toString();
 
@@ -115,7 +114,7 @@ public class NewEventActivity extends AppCompatActivity {
             //Store the values as Strings and then to Json Attributes.
 
             // Building Parameters
-            Map<String,String> params = new HashMap<String, String>();
+            Map<String, String> params = new HashMap<String, String>();
 
             //add values according to key
 //            params.put("event_name",EventName);
@@ -123,9 +122,9 @@ public class NewEventActivity extends AppCompatActivity {
 //            params.put("event_place",EventPlace);
 //            params.put("event_lat",Current_Lat);
 //            params.put("event_long",Current_Long);
-            params.put("eventName",EventName);
-            params.put("location",Current_Lat+','+Current_Long);
-            params.put("event_description",EventDescription);
+            params.put("eventName", EventName);
+            params.put("location", Current_Lat + ',' + Current_Long);
+            params.put("event_description", EventDescription);
 
             // getting JSON Object
             // Note that create product url accepts POST method
@@ -138,6 +137,7 @@ public class NewEventActivity extends AppCompatActivity {
             try {
 //                int success = json.getInt(TAG_SUCCESS);
                 String success = json.getString(TAG_SUCCESS);
+                String eventId = json.getString("eventId");
 
 //                if (success == 1) {
                 if (success.contains("New Event Created!")) {
@@ -151,7 +151,7 @@ public class NewEventActivity extends AppCompatActivity {
                     finish();
                 } else {
                     // failed to create event
-                    Log.i("Empty Response,","Event Creation failed");
+                    Log.i("Empty Response,", "Event Creation failed");
                     tstmsg = String.valueOf(R.string.tst_EventCreationFailed);
                     //Toast tst = Toast.makeText(this, R.string.tst_EventCreationFailed, Toast.LENGTH_SHORT);
                 }
@@ -160,9 +160,10 @@ public class NewEventActivity extends AppCompatActivity {
             }
             return null;
         }
+
         /**
          * After completing background task Dismiss the progress dialog
-         * **/
+         **/
         protected void onPostExecute(String file_url) {
             //displays a message to user about the event addition
             Toast tst = Toast.makeText(getApplicationContext(), tstmsg, Toast.LENGTH_LONG);

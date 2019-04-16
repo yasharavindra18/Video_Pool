@@ -1,17 +1,16 @@
 package com.example.hci;
 
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -47,26 +46,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             MapsActivity.class.getSimpleName();
 
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 5445;
-
-
+    private static final int REQUEST_CAMERA = 0;
     private static String[] PERMISSIONS_CAMERA = {Manifest.permission.CAMERA,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.RECORD_AUDIO};
-
-    private static final int REQUEST_CAMERA = 0;
-
-
+    public Marker marker[] = null;
+    String latitude_current = "";//String.valueOf(currentLocation.getLatitude());
+    String longitude_current = "";//String.valueOf(currentLocation.getLongitude());
     private GoogleMap googleMap;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private Marker currentLocationMarker;
     private Location currentLocation;
-    private boolean firstTimeFlag = true;
-    public Marker marker[] = null;
-
-    String latitude_current = "";//String.valueOf(currentLocation.getLatitude());
-    String longitude_current = "";//String.valueOf(currentLocation.getLongitude());
-    //currentLocation = locationResult.getLastLocation();
-
     private final View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -74,7 +64,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 MapsActivity.this.animateCamera(currentLocation);
         }
     };
-
+    //currentLocation = locationResult.getLastLocation();
+    private boolean firstTimeFlag = true;
     private final LocationCallback mLocationCallback = new LocationCallback() {
 
         @Override
@@ -90,10 +81,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             //showMarker(currentLocation);
             latitude_current = String.valueOf(currentLocation.getLatitude());
             longitude_current = String.valueOf(currentLocation.getLongitude());
-            new EventsData().execute(latitude_current,longitude_current);
+            new EventsData().execute(latitude_current, longitude_current);
 
             //startService(new Intent(MapsActivity.this, MyService.class));
-            if(!lats.isEmpty() && !longs.isEmpty()) {
+            if (!lats.isEmpty() && !longs.isEmpty()) {
                 Log.i("lats", String.valueOf(lats));
                 /*if (marker!=null){
                     marker.remove();
@@ -101,17 +92,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }*/
                 //googleMap.clear();
                 //showMarker(currentLocation);
-                for(int i =0;i<lats.size();i++) {
+                for (int i = 0; i < lats.size(); i++) {
                     //Log.i("Rec", String.valueOf(rec));
-                    if(rec.get(i).equals("0")) {
+                    if (rec.get(i).equals("0")) {
                         Log.i("Rec", String.valueOf(rec));
                         showHousesMarker(lats.get(i), longs.get(i), rec.get(i), id.get(i));
-                    }else{
-                        showNonHousesMarker(lats.get(i), longs.get(i),rec.get(i),id.get(i));
+                    } else {
+                        showNonHousesMarker(lats.get(i), longs.get(i), rec.get(i), id.get(i));
                     }
                 }
 
-            }else {
+            } else {
                 googleMap.clear();
             }
             showMarker(currentLocation);
@@ -119,8 +110,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         }
     };
+
     //------------------------------Markers-------------------------------------//
-    private void showHousesMarker(String latitude, String longitude, String title,String id) {
+    private void showHousesMarker(String latitude, String longitude, String title, String id) {
         LatLng latLng = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
         //googleMap.clear();
 
@@ -128,7 +120,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         googleMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.pointer)).position(latLng).title(title).snippet(id));
     }
 
-    private void showNonHousesMarker(String latitude, String longitude, String title,String id) {
+    private void showNonHousesMarker(String latitude, String longitude, String title, String id) {
         LatLng latLng = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
         //googleMap.clear();
 
@@ -148,7 +140,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             googleMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.pointer)).position(latLng1));
         }*/
         //if (currentLocationMarker == null)
-        currentLocationMarker = googleMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker( BitmapDescriptorFactory.HUE_BLUE)).position(latLng));
+        currentLocationMarker = googleMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)).position(latLng));
 //        MarkerOptions markerOptions = new MarkerOptions();
 //        markerOptions.position(latLng)
 //                .title("Snowqualmie Falls")
@@ -174,7 +166,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         //else
         // MarkerAnimation.animateMarkerToGB(currentLocationMarker, latLng, new LatLngInterpolator.Spherical());
     }
-//--------------------------Markers----------------------------------------------------//
+
+    //--------------------------Markers----------------------------------------------------//
 //-----------------open Camera on clicking on record video button ----------------------//
 //--------------------------------------------------------------------------------------//
     @Override
@@ -191,7 +184,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     }
-
 
 
     @Override
@@ -252,8 +244,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
-
-
     @Override
     protected void onStop() {
         super.onStop();
@@ -278,25 +268,25 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     /*
-    * This function opens camera on clicking on the event*/
+     * This function opens camera on clicking on the event*/
     @Override
     public void onInfoWindowClick(Marker marker) {
         Log.i("result1", marker.getSnippet());
         Log.i("Opening camera", marker.getSnippet());
         Log.d(LOG_TAG, "--> Camera Button clicked! Checking for camera permissions");
 
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED
-                || ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED
-                || ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)!= PackageManager.PERMISSION_GRANTED){
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
             //Camera Permission has not been Granted so throw a snackbar saying that we need a permission
             requestCameraPermission();
-        }else {
+        } else {
             Log.d(LOG_TAG, "--> Clicked on record view, fetching Events");
             Intent intnt = new Intent(this, MainActivity.class);
             intnt.putExtra("EventName", marker.getTitle().toString());
             intnt.putExtra("EventID", marker.getId().toString());
-            intnt.putExtra("Event_Lat",marker.getPosition().latitude);
-            intnt.putExtra("Event_Long",marker.getPosition().longitude);
+            intnt.putExtra("Event_Lat", marker.getPosition().latitude);
+            intnt.putExtra("Event_Long", marker.getPosition().longitude);
             startActivity(intnt);
         }
     }
@@ -325,8 +315,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         //mLocationCallback.onLocationResult();
         //String current
         Intent intnt = new Intent(this, NewEventActivity.class);
-        intnt.putExtra("current_lat",latitude_current);
-        intnt.putExtra("current_long",longitude_current);
+        intnt.putExtra("current_lat", latitude_current);
+        intnt.putExtra("current_long", longitude_current);
         startActivity(intnt);
 
     }

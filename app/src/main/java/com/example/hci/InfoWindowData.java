@@ -1,5 +1,7 @@
 package com.example.hci;
+
 public class InfoWindowData {
+
     private String image;
     private String hotel;
     private String food;
