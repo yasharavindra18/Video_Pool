@@ -61,10 +61,10 @@ public class NewEventActivity extends AppCompatActivity {
 
         //Edit Text
         In_eventName = (EditText) findViewById(R.id.text_event_name);
-        In_eventDescription = (EditText) findViewById(R.id.editText3);
+        In_eventDescription = (EditText) findViewById(R.id.text_event_description);
         In_eventPlace = (EditText) findViewById(R.id.text_event_name);
 
-        Button btnAddEvent = (Button) findViewById(R.id.addEventButton);
+        Button btnAddEvent = (Button) findViewById(R.id.button_add_event);
         // button click event
         btnAddEvent.setOnClickListener(new View.OnClickListener() {
 

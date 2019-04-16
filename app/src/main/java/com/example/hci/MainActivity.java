@@ -1,13 +1,14 @@
 package com.example.hci;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.hardware.Camera;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
-import android.os.AsyncTask;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,131 +16,155 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Chronometer;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.Toast;
+import android.widget.FrameLayout;
 
+import java.io.File;
 import java.io.IOException;
-
-import static android.hardware.Camera.open;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    boolean recording = false;
-    // Variables
-    String eventName, eventId, userId;
-    double eventLat, eventLng;
-    String fileName;
-    // Progress Dialog
-    private ProgressDialog pDialog;
-    private android.hardware.Camera mCamera;
+    public static final int MEDIA_TYPE_IMAGE = 1;
+    public static final int MEDIA_TYPE_VIDEO = 2;
+
+    private static String TAG = MainActivity.class.getSimpleName();
+    private Camera mCamera;
     private CameraPreview mPreview;
     private MediaRecorder mediaRecorder;
-    private Button capture, switchCamera;
-    private Context myContext;
-    private LinearLayout cameraPreview;
+    private Chronometer mChronometer;
+    private boolean isRecording = false;
     private boolean cameraFront = false;
-    View.OnClickListener switchCameraListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            // get the number of cameras
-            if (!recording) {
-                int camerasNumber = android.hardware.Camera.getNumberOfCameras();
-                if (camerasNumber > 1) {
-                    // release the old camera instance
-                    // switch camera, from the front and the back and vice versa
-                    releaseCamera();
-                    chooseCamera();
-                } else {
-                    Toast toast = Toast.makeText(myContext, "Sorry, your phone has only one camera!", Toast.LENGTH_LONG);
-                    toast.show();
-                }
-            }
+
+    // Data
+    private String eventId, eventName, userId;
+    private double eventLat, eventLng;
+
+    /**
+     * A safe way to get an instance of the Camera object.
+     *
+     * @return Camera object if found, or null if not found or exception occured
+     */
+    public static Camera getCameraInstance() {
+        Camera c;
+        try {
+            c = Camera.open();
+        } catch (Exception e) {
+            return null;
         }
-    };
-    //Displaying timer using chronometer
-    private Chronometer mchronometer;
-    final View.OnClickListener captrureListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (recording) {
-                //Stop Chronometer
-                mchronometer.stop();
-                // stop recording and release camera
-                mediaRecorder.stop(); // stop the recording
-                releaseMediaRecorder(); // release the MediaRecorder object
-                Toast.makeText(MainActivity.this, "Video captured!", Toast.LENGTH_LONG).show();
-
-
-                //Upload the video to the server from here
-//                new phpVideoUpload().execute();
-
-                /*
-                videoUploadTask vUT = new videoUploadTask();
-                vUT.setEventId(eventID);
-                vUT.setFileName(fileName);
-                vUT.setFilePath(filePath);
-
-                vUT.executevideoUpload();
-                */
-
-                recording = false;
-                capture.setBackgroundResource(R.drawable.play);
-            } else {
-                try {
-                    // Prepare Media Recorder
-                    prepareMediaRecorder();
-                    //Start Recording
-                    mediaRecorder.start();
-                    // Start Chronometer
-                    mchronometer.setBase(SystemClock.elapsedRealtime());
-                    mchronometer.setVisibility(View.VISIBLE);
-                    mchronometer.start();
-                    // If all goes well, update the UI
-                    Toast.makeText(MainActivity.this, "Started Recording", Toast.LENGTH_LONG).show();
-                    recording = true;
-                    capture.setBackgroundResource(R.drawable.pause);
-                } catch (Exception e) {
-                    recording = false;
-                    mchronometer.stop();
-                    e.printStackTrace();
-                    releaseMediaRecorder();
-                    // If something is broken, first update the UI
-                    Toast.makeText(MainActivity.this, "Failed to Start Recording", Toast.LENGTH_LONG).show();
-//                    finish();
-                }
-            }
-        }
-    };
-    //ProgressBar
-    private ProgressBar progressBar;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); // to Keep the screen always on
-        myContext = this;
-        initialize();
+        return c;
     }
 
-    public void initialize() {
-        cameraPreview = (LinearLayout) findViewById(R.id.camera_preview);
+    /**
+     * Create a file Uri for saving an image or video
+     */
+    private static Uri getOutputMediaFileUri(int type) {
+        return Uri.fromFile(getOutputMediaFile(type));
+    }
 
-        //Setting chronometer object on layout
-        mchronometer = (Chronometer) findViewById(R.id.linear_chronometer);
 
-        mPreview = new CameraPreview(myContext);
-        mPreview.initialize(mCamera);
-        cameraPreview.addView(mPreview);
+    /**
+     * Create a File for saving an image or video
+     */
+    private static File getOutputMediaFile(int type) {
+        // To be safe, you should check that the SDCard is mounted
+        // using Environment.getExternalStorageState() before doing this.
 
-        capture = (Button) findViewById(R.id.button_capture);
-        capture.setOnClickListener(captrureListener);
+        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES), "hci");
+        // This location works best if you want the created images to be shared
+        // between applications and persist after your app has been uninstalled.
 
-        switchCamera = (Button) findViewById(R.id.button_ChangeCamera);
-        switchCamera.setOnClickListener(switchCameraListener);
+        // Create the storage directory if it does not exist
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
+                Log.d("hci", "failed to create directory");
+                return null;
+            }
+        }
 
-        //getting data from other intent
+        // Create a media file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+        File mediaFile;
+        if (type == MEDIA_TYPE_IMAGE) {
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+                    "IMG_" + timeStamp + ".jpg");
+        } else if (type == MEDIA_TYPE_VIDEO) {
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+                    "VID_" + timeStamp + ".mp4");
+        } else {
+            return null;
+        }
+
+        return mediaFile;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+        // Create an instance of Camera
+        mCamera = getCameraInstance();
+
+        // Create our Preview view and set it as the content of our activity.
+        mPreview = new CameraPreview(this, mCamera);
+        FrameLayout preview = findViewById(R.id.camera_preview);
+        preview.addView(mPreview);
+
+        // Add a listener to the Capture button
+        final Button captureButton = findViewById(R.id.button_capture);
+        final Button switchButton = findViewById(R.id.button_switch);
+        captureButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (isRecording) {
+                            // stop recording and release camera
+                            mediaRecorder.stop();  // stop the recording
+                            mChronometer.stop();   // stop the chronometer
+                            releaseMediaRecorder(); // release the MediaRecorder object
+                            mCamera.lock();         // take camera access back from MediaRecorder
+
+                            // inform the user that recording has stopped
+                            captureButton.setBackgroundResource(R.drawable.play);
+                            isRecording = false;
+                        } else {
+                            // initialize video camera
+                            if (prepareVideoRecorder()) {
+                                // Camera is available and unlocked, MediaRecorder is prepared,
+                                // now you can start recording
+                                mediaRecorder.start();
+                                // start the chronometer
+                                mChronometer.setBase(SystemClock.elapsedRealtime());
+                                mChronometer.setVisibility(View.VISIBLE);
+                                mChronometer.start();
+
+                                // inform the user that recording has started
+                                captureButton.setBackgroundResource(R.drawable.pause);
+                                isRecording = true;
+                            } else {
+                                // prepare didn't work, release the camera
+                                releaseMediaRecorder();
+                                // inform user
+                            }
+                        }
+                    }
+                }
+        );
+        switchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchCamera();
+            }
+        });
+
+        // Chronometer Setup
+        mChronometer = findViewById(R.id.linear_chronometer);
+
+        // State Information
         Intent in = getIntent();
         Bundle e = in.getExtras();
         if (e == null) {
@@ -149,40 +174,28 @@ public class MainActivity extends AppCompatActivity {
         eventName = e.getString("e_name");
         eventLat = e.getDouble("e_lat");
         eventLng = e.getDouble("e_lng");
-        userId = "!"; // TODO
-        Log.d("Event Details (ID, USER) : ", eventId + ", " + userId);
-
-        //Setting file name with event name
-        fileName = eventId + "_" + userId + ".mp4";
+        userId = "1"; // TODO
     }
 
-    public void onResume() {
-        super.onResume();
-        if (!hasCamera(myContext)) {
-            Toast toast = Toast.makeText(myContext, "Sorry, your phone does not have a camera!", Toast.LENGTH_LONG);
-            toast.show();
-            finish();
-        }
-
-        if (mCamera == null) {
-            //if front camera doesnt exist
-            if (findFrontFacingCamera() < 0) {
-                Toast.makeText(this, "No front facing camera found.", Toast.LENGTH_LONG).show();
-                switchCamera.setVisibility(View.GONE);
-            }
-            mCamera = open(findBackFacingCamera());
-            mPreview.refreshCamera(mCamera);
-        }
+    /**
+     * Return if device has camera hardware or not
+     *
+     * @param context Context object
+     * @return true if device has camera, else false
+     */
+    private boolean checkCameraHardware(Context context) {
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
     }
 
     private int findFrontFacingCamera() {
+        if (!checkCameraHardware(this)) return -1;
         int cameraId = -1;
         // Search for the front facing camera
-        int numberOfCameras = android.hardware.Camera.getNumberOfCameras();
+        int numberOfCameras = Camera.getNumberOfCameras();
         for (int i = 0; i < numberOfCameras; i++) {
-            android.hardware.Camera.CameraInfo info = new android.hardware.Camera.CameraInfo();
-            android.hardware.Camera.getCameraInfo(i, info);
-            if (info.facing == android.hardware.Camera.CameraInfo.CAMERA_FACING_FRONT) {
+            Camera.CameraInfo info = new Camera.CameraInfo();
+            Camera.getCameraInfo(i, info);
+            if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
                 cameraId = i;
                 cameraFront = true;
                 break;
@@ -192,15 +205,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private int findBackFacingCamera() {
+        if (!checkCameraHardware(this)) return -1;
         int cameraId = -1;
         // Search for the back facing camera
         // get the number of cameras
-        int numberOfCameras = android.hardware.Camera.getNumberOfCameras();
+        int numberOfCameras = Camera.getNumberOfCameras();
         // for every camera check
         for (int i = 0; i < numberOfCameras; i++) {
-            android.hardware.Camera.CameraInfo info = new android.hardware.Camera.CameraInfo();
-            android.hardware.Camera.getCameraInfo(i, info);
-            if (info.facing == android.hardware.Camera.CameraInfo.CAMERA_FACING_BACK) {
+            Camera.CameraInfo info = new Camera.CameraInfo();
+            Camera.getCameraInfo(i, info);
+            if (info.facing == Camera.CameraInfo.CAMERA_FACING_BACK) {
                 cameraId = i;
                 cameraFront = false;
                 break;
@@ -209,12 +223,7 @@ public class MainActivity extends AppCompatActivity {
         return cameraId;
     }
 
-    private boolean hasCamera(Context context) {
-        // check if the device has camera
-        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
-    }
-
-    public void chooseCamera() {
+    public void switchCamera() {
         // if the camera preview is the front
         if (cameraFront) {
             int cameraId = findBackFacingCamera();
@@ -223,9 +232,7 @@ public class MainActivity extends AppCompatActivity {
                 // set a picture callback
                 // refresh the preview
 
-                mCamera = android.hardware.Camera.open(cameraId);
-                // mPicture = getPictureCallback();
-                mPreview.refreshCamera(mCamera);
+                mCamera = Camera.open(cameraId);
             }
         } else {
             int cameraId = findFrontFacingCamera();
@@ -235,143 +242,78 @@ public class MainActivity extends AppCompatActivity {
                 // refresh the preview
 
                 mCamera = android.hardware.Camera.open(cameraId);
-                // mPicture = getPictureCallback();
-                mPreview.refreshCamera(mCamera);
             }
         }
+        if (mCamera != null) {
+            mPreview = new CameraPreview(this, mCamera);
+            FrameLayout preview = findViewById(R.id.camera_preview);
+            preview.addView(mPreview);
+        }
+    }
+
+    /**
+     * Prepare the MediaRecorder for Capturing Video
+     *
+     * @return boolean value whether MediaRecorder was prepared or not
+     */
+    private boolean prepareVideoRecorder() {
+
+        mCamera = getCameraInstance();
+        mediaRecorder = new MediaRecorder();
+
+        // Step 1: Unlock and set camera to MediaRecorder
+        mCamera.unlock();
+        mediaRecorder.setCamera(mCamera);
+
+        // Step 2: Set sources
+        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
+        mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+
+        // Step 3: Set a CamcorderProfile (requires API Level 8 or higher)
+        mediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_LOW));
+
+
+        // Step 4: Set output file
+        mediaRecorder.setOutputFile(getOutputMediaFile(MEDIA_TYPE_VIDEO));
+
+        // Step 5: Set the preview output
+        mediaRecorder.setPreviewDisplay(mPreview.getHolder().getSurface());
+
+        // Step 6: Prepare configured MediaRecorder
+        try {
+            mediaRecorder.prepare();
+        } catch (IllegalStateException e) {
+            Log.d(TAG, "IllegalStateException preparing MediaRecorder: " + e.getMessage());
+            releaseMediaRecorder();
+            return false;
+        } catch (IOException e) {
+            Log.d(TAG, "IOException preparing MediaRecorder: " + e.getMessage());
+            releaseMediaRecorder();
+            return false;
+        }
+        return true;
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        // when on Pause, release camera in order to be used from other
-        // applications
-        releaseCamera();
+        releaseMediaRecorder();       // if you are using MediaRecorder, release it first
+        releaseCamera();              // release the camera immediately on pause event
     }
 
     private void releaseMediaRecorder() {
         if (mediaRecorder != null) {
-            mediaRecorder.reset(); // clear recorder configuration
+            mediaRecorder.reset();   // clear recorder configuration
             mediaRecorder.release(); // release the recorder object
             mediaRecorder = null;
-//            mCamera.lock(); // lock camera for later use
+            mCamera.lock();           // lock camera for later use
         }
-    }
-
-    private void prepareMediaRecorder() throws IOException {
-        mediaRecorder = new MediaRecorder();
-
-//        mCamera.unlock();
-        mediaRecorder.setCamera(mCamera);
-
-        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
-        mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-
-        mediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_720P));
-
-        mediaRecorder.setOutputFile("/sdcard/" + fileName);
-        mediaRecorder.setMaxDuration(600000); //set maximum duration 60 sec.
-        mediaRecorder.setMaxFileSize(50000000); //set maximum file size 50M
-        mediaRecorder.prepare();
     }
 
     private void releaseCamera() {
-        // stop and release camera
         if (mCamera != null) {
-            mCamera.release();
+            mCamera.release();        // release the camera for other applications
             mCamera = null;
         }
     }
-
-
-    /**
-     * Background Async Task to upload recorded video
-     */
-    private class phpVideoUpload extends AsyncTask<Void, Integer, String> {
-        /* This Class is an AsyncTask to upload a video to a server on a background thread
-         *
-         */
-        @Override
-        protected void onPreExecute() {
-            // setting progress bar to zero
-            //super.onPreExecute();
-            super.onPreExecute();
-            pDialog = new ProgressDialog(MainActivity.this);
-            pDialog.setMessage("Uploading Video..");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
-        }
-
-        @Override
-        protected void onProgressUpdate(Integer... progress) {
-
-        }
-
-        @Override
-        protected String doInBackground(Void... params) {
-
-//            JSONObject json = uploadFile();
-//            // check for success tag
-//            try {
-//                int success = json.getInt(TAG_SUCCESS);
-//
-//                if (success == 1) {
-//                    // successfully created Event, Redirect to Maps Activity
-//                    //Toast tst = Toast.makeText(this, R.string.tst_EventCreationFailed, Toast.LENGTH_SHORT);
-//                    Intent i = new Intent(getApplicationContext(), MapsActivity.class);
-//                    startActivity(i);
-//
-//                    // closing this screen
-//                    finish();
-//                } else {
-//                    // failed to create event
-//                    Log.i("Upload Video Failed", "Upload video failed!!!!!");
-//                    //Toast tst = (Toast) Toast.makeText("Video Upload Failed", Toast.LENGTH_SHORT);
-//                    //tst.show();
-//                    // closing this screen
-//                    finish();
-//                }
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-            return null;
-        }
-
-//        @SuppressWarnings("deprecation")
-//        private JSONObject uploadFile() {
-//            JSONObject responseString;
-//            // Building Parameters
-//            Map<String, String> params = new HashMap<String, String>();
-//
-//            /*
-//            params need filename,filepath on local,
-//            filepath = params.get("filepath");
-//            fileName = params.get("fileName");
-//            eventId = params.get("event_id");
-//             */
-//            params.put("filepath", filePath);
-//            params.put("fileName", fileName);
-//            params.put("event_id", eventID);
-//
-//            // getting JSON Object
-//            // Note that upload url accepts POST method
-//            // url contains multipart form data so pass parameters along with the request
-//            //
-//            JSONObject json = jsonParser.makeHttpRequest(url_upload_video,
-//                    "VIDEO", params);
-//            // check log cat fro response
-//            Log.d("Video Upload Response", json.toString());
-//            //responseString = json.toString();
-//            responseString = json;
-//            return responseString;
-//        }
-
-        //@Override
-        protected void onPostExecute(Integer result) {
-            //Check the return code and update the listener
-            Log.d("VideoUploadTask onPostExecute", "updating listener after execution");
-        }
-    }
-
 }
