@@ -1,4 +1,4 @@
-package com.example.hci;
+package com.hci;
 
 import android.os.HandlerThread;
 import android.os.ParcelFileDescriptor;

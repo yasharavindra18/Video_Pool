@@ -1,4 +1,4 @@
-package com.example.hci;
+package com.hci.activities;
 
 import org.junit.Test;
 

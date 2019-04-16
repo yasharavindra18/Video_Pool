@@ -1,4 +1,4 @@
-package com.example.hci;
+package com.hci;
 
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -17,7 +17,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import static com.example.Utilities.config.url_get_all_events;
+import static com.hci.Utilities.config.url_get_all_events;
 
 public class EventsData extends AsyncTask<String, String, String> {
     public final static ArrayList<String> rec = new ArrayList<String>();

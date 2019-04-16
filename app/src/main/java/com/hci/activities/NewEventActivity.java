@@ -1,4 +1,4 @@
-package com.example.EventUtilities;
+package com.hci.activities;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -10,11 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.Utilities.JSONParser;
-import com.example.hci.MapsActivity;
-import com.example.hci.R;
+import com.hci.Utilities.JSONParser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,29 +21,22 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.Utilities.config.url_create_event;
+import static com.hci.Utilities.config.url_create_event;
 
 
 public class NewEventActivity extends AppCompatActivity {
 
     // JSON Node names
-//    private static final String TAG_SUCCESS = "success";
     private static final String TAG_SUCCESS = "status";
     //Create JSON Parser
-    JSONParser jsonParser = new JSONParser();
+    private JSONParser jsonParser = new JSONParser();
+    private String event_lat = "";
+    private String event_lng = "";
     //Edit Text
-    EditText In_eventName;
-    EditText In_eventDescription;
-    EditText In_eventPlace;
-
-    //URL
-    //String url =
-    //Latitude and longitude Strings
-    String Current_Lat = "";
-//    private static final String TAG_EventName = "event_name";
-//    private static final String TAG_EventDescription = "event_description";
-//    private static final String TAG_EventPlace = "event_place";
-    String Current_Long = "";
+    private EditText textEventName;
+    private EditText textEventDescription;
+    private TextView textEventPlace;
+    private Button btnAddEvent;
     // Progress Dialog
     private ProgressDialog pDialog;
 
@@ -55,23 +47,22 @@ public class NewEventActivity extends AppCompatActivity {
 
         //Getting data from another Intent
         Intent intent = getIntent();
-        Current_Lat = intent.getStringExtra("current_lat");
-        Current_Long = intent.getStringExtra("current_long");
+        event_lat = intent.getStringExtra("current_lat");
+        event_lng = intent.getStringExtra("current_long");
 
 
         //Edit Text
-        In_eventName = (EditText) findViewById(R.id.text_event_name);
-        In_eventDescription = (EditText) findViewById(R.id.text_event_description);
-        In_eventPlace = (EditText) findViewById(R.id.text_event_name);
-
-        Button btnAddEvent = (Button) findViewById(R.id.button_add_event);
+        textEventName = findViewById(R.id.text_event_name);
+        textEventDescription = findViewById(R.id.text_event_description);
+        textEventPlace = findViewById(R.id.label_select_place);
+        btnAddEvent = findViewById(R.id.button_add_event);
         // button click event
         btnAddEvent.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 // creating new Event in background thread
-                new addNewEvent().execute();
+                new AddNewEvent().execute();
             }
         });
     }
@@ -79,7 +70,7 @@ public class NewEventActivity extends AppCompatActivity {
     /**
      * Background Async Task to Create new Event
      */
-    class addNewEvent extends AsyncTask<String, String, String> {
+    class AddNewEvent extends AsyncTask<String, String, String> {
         /**
          * Before starting background thread Show Progress Dialog
          */
@@ -100,36 +91,18 @@ public class NewEventActivity extends AppCompatActivity {
          */
         @SuppressLint("WrongThread")
         protected String doInBackground(String... args) {
-            String EventName = In_eventName.getText().toString();
+            String eventName = textEventName.getText().toString();
             ;
-            String EventDescription = In_eventDescription.getText().toString();
-            String EventPlace = In_eventPlace.getText().toString();
-
-            //Get Latitude and longitudes from intents
-            //Intent intnt = new Intent();
-            //Current_Lat = intnt.getStringExtra("current_lat");
-            //Current_Long = intnt.getStringExtra("current_long");
-
-
-            //Store the values as Strings and then to Json Attributes.
-
-            // Building Parameters
+            String EventDescription = textEventDescription.getText().toString();
+            String EventPlace = textEventPlace.getText().toString();
             Map<String, String> params = new HashMap<String, String>();
-
-            //add values according to key
-//            params.put("event_name",EventName);
-//            params.put("event_description",EventDescription);
-//            params.put("event_place",EventPlace);
-//            params.put("event_lat",Current_Lat);
-//            params.put("event_long",Current_Long);
-            params.put("eventName", EventName);
-            params.put("location", Current_Lat + ',' + Current_Long);
+            params.put("eventName", eventName);
+            params.put("location", event_lat + ',' + event_lng);
             params.put("event_description", EventDescription);
 
             // getting JSON Object
             // Note that create product url accepts POST method
-            JSONObject json = jsonParser.makeHttpRequest(url_create_event,
-                    "POST", params);
+            JSONObject json = jsonParser.makeHttpRequest(url_create_event,"POST", params);
 
             // check log cat fro response
             Log.d("Create Response", json.toString());

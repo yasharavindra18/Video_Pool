@@ -1,4 +1,4 @@
-package com.example.Utilities;
+package com.hci.Utilities;
 
 public class config {
 

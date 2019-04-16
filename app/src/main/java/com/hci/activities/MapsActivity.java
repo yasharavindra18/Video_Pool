@@ -1,4 +1,4 @@
-package com.example.hci;
+package com.hci.activities;
 
 
 import android.Manifest;
@@ -15,7 +15,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.EventUtilities.NewEventActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -32,11 +31,13 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.hci.CustomInfoWindowGoogleMap;
+import com.hci.EventsData;
 
-import static com.example.hci.EventsData.id;
-import static com.example.hci.EventsData.lats;
-import static com.example.hci.EventsData.longs;
-import static com.example.hci.EventsData.rec;
+import static com.hci.EventsData.id;
+import static com.hci.EventsData.lats;
+import static com.hci.EventsData.longs;
+import static com.hci.EventsData.rec;
 
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {

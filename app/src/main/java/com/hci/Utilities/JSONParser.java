@@ -1,4 +1,4 @@
-package com.example.Utilities;
+package com.hci.Utilities;
 
 import android.net.Uri;
 import android.util.Log;
@@ -21,9 +21,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Map;
 
-import static com.example.Utilities.Constants.CONNECTION_TIMEOUT;
-import static com.example.Utilities.Constants.READ_TIMEOUT;
-import static com.example.Utilities.Constants.UNSUCCESSFUL_MESSAGE;
+import static com.hci.Utilities.Constants.CONNECTION_TIMEOUT;
+import static com.hci.Utilities.Constants.READ_TIMEOUT;
+import static com.hci.Utilities.Constants.UNSUCCESSFUL_MESSAGE;
 
 public class JSONParser {
     static InputStream is = null;
@@ -189,7 +189,7 @@ public class JSONParser {
         try {
             int response_code = conn.getResponseCode();
             // Check if successful connection made
-            if (response_code == HttpURLConnection.HTTP_OK) {
+            if (response_code == HttpURLConnection.HTTP_OK || response_code == HttpURLConnection.HTTP_CREATED) {
                 // Read data sent from server
                 is = conn.getInputStream();
                 //InputStream is

@@ -1,4 +1,4 @@
-package com.example.hci;
+package com.hci;
 
 import android.content.Context;
 import android.hardware.Camera;

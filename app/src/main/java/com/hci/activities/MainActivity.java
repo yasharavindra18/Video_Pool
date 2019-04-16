@@ -1,4 +1,4 @@
-package com.example.hci;
+package com.hci.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +17,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.FrameLayout;
+
+import com.hci.CameraPreview;
 
 import java.io.File;
 import java.io.IOException;

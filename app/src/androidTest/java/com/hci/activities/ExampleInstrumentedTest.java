@@ -1,4 +1,4 @@
-package com.example.hci;
+package com.hci.activities;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
