@@ -5,7 +5,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
 import android.support.annotation.NonNull;
@@ -56,15 +55,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private GoogleMap googleMap;
     private FusedLocationProviderClient fusedLocationProviderClient;
-    private Location currentLocation;
-
-    private final View.OnClickListener clickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if (view.getId() == R.id.currentLocationImageButton && googleMap != null && currentLocation != null)
-                MapsActivity.this.animateCamera(currentLocation);
-        }
-    };
 
     private boolean firstTimeFlag = true;
     private final LocationCallback mLocationCallback = new LocationCallback() {
@@ -74,7 +64,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             super.onLocationResult(locationResult);
             if (locationResult.getLastLocation() == null)
                 return;
-            currentLocation = locationResult.getLastLocation();
+            Location currentLocation = locationResult.getLastLocation();
             if (firstTimeFlag && googleMap != null) {
                 animateCamera(currentLocation);
                 firstTimeFlag = false;
@@ -99,7 +89,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private void addMarker(String latitude, String longitude, String title, String id) {
         LatLng latLng = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
-        googleMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.pointer)).position(latLng).title(title).snippet(id));
+        googleMap.addMarker(new MarkerOptions().position(latLng).title(title).snippet(id));
     }
 
     private void showMarker(@NonNull Location currentLocation) {
@@ -117,13 +107,18 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_maps);
         SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapFragment);
         supportMapFragment.getMapAsync(this);
-        findViewById(R.id.currentLocationImageButton).setOnClickListener(clickListener);
     }
 
 
     @Override
     public void onMapReady(GoogleMap Map) {
         this.googleMap = Map;
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        this.googleMap.setMyLocationEnabled(true);
+        this.googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+        this.googleMap.getUiSettings().setZoomControlsEnabled(true);
         googleMap.setOnInfoWindowClickListener(this);
     }
 
@@ -132,13 +127,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         LocationRequest locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         locationRequest.setInterval(100);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(MapsActivity.this,
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                        MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
-                return;
-            }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MapsActivity.this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+            return;
         }
         fusedLocationProviderClient.requestLocationUpdates(locationRequest, mLocationCallback, Looper.myLooper());
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ThemeOverlay.AppCompat.Dialog"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -8,15 +9,17 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:textAllCaps="true"
+        android:layout_margin="5sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
     <ImageView
         android:id="@+id/pic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:src="@mipmap/ic_launcher_round" />
-
-
+        android:layout_width="300sp"
+        android:layout_height="100sp"
+        android:layout_margin="5sp"
+        android:contentDescription="Banner"
+        android:scaleType="centerCrop"
+        android:src="@drawable/event" />
 </LinearLayout>
