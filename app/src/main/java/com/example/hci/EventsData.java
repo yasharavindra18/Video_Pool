@@ -49,7 +49,14 @@ public class EventsData extends AsyncTask<String, String, String> {
         try {
             // Enter URL address where your php file resides
             // url = new URL("http://qav2.cs.odu.edu/swaroop/HCI/getEvents.php");
-            url = new URL(url_get_all_events);
+            // Append parameters to URL
+            Uri.Builder builder = new Uri.Builder()
+                    // .appendQueryParameter("latitude", params[0])
+                    // .appendQueryParameter("longitude", params[1]);
+                    .appendQueryParameter("lat", params[0])
+                    .appendQueryParameter("lng", params[1]);
+            String query = builder.build().getEncodedQuery();
+            url = new URL(url_get_all_events + "?" + query);
 
 
         } catch (MalformedURLException e) {
@@ -66,24 +73,7 @@ public class EventsData extends AsyncTask<String, String, String> {
 
             // setDoInput and setDoOutput method depict handling of both send and receive
             conn.setDoInput(true);
-            conn.setDoOutput(true);
-
-            // Append parameters to URL
-            Uri.Builder builder = new Uri.Builder()
-                    // .appendQueryParameter("latitude", params[0])
-                    // .appendQueryParameter("longitude", params[1]);
-                    .appendQueryParameter("lat", params[0])
-                    .appendQueryParameter("lng", params[1]);
-            String query = builder.build().getEncodedQuery();
-
-            // Open connection for sending data
-            OutputStream os = conn.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(
-                    new OutputStreamWriter(os, "UTF-8"));
-            writer.write(query);
-            writer.flush();
-            writer.close();
-            os.close();
+            conn.setDoOutput(false);
             conn.connect();
 
         } catch (IOException e1) {
@@ -134,12 +124,11 @@ public class EventsData extends AsyncTask<String, String, String> {
         //pdLoading.dismiss();
         Log.i("result", String.valueOf(result));
         try {
-            JSONObject reader = new JSONObject(result);
-            JSONArray houses = reader.getJSONArray("data");
+            JSONArray events = new JSONArray(result);
             lats.clear();
             longs.clear();
-            for(int i =0;i<houses.length();i++){
-                JSONObject c = houses.getJSONObject(i);
+            for(int i =0;i<events.length();i++){
+                JSONObject c = events.getJSONObject(i);
                 // lats.add(c.getString("Event_lat"));
                 // longs.add(c.getString("Event_long"));
                 // rec.add(c.getString("Event_Name"));
