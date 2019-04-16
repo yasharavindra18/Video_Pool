@@ -1,6 +1,7 @@
 package com.example.hci;
 
 import android.content.Context;
+import android.hardware.Camera;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -10,27 +11,28 @@ import java.io.IOException;
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
 
     private SurfaceHolder mHolder;
-    private android.hardware.Camera mCamera;
+    private Camera mCamera;
 
-    public CameraPreview(Context context, android.hardware.Camera camera) {
+    public CameraPreview(Context context) {
         super(context);
-        mCamera = camera;
         mHolder = getHolder();
         mHolder.addCallback(this);
         // deprecated setting, but required on Android versions prior to 3.0
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+    }
 
+    public void initialize(Camera camera) {
+        mCamera = camera;
     }
 
     public void surfaceCreated(SurfaceHolder holder) {
         try {
             // create the surface and start camera preview
-            if (mCamera == null) {
+            if (mCamera != null) {
                 //mCamera.setDisplayOrientation(180);
                 mCamera.setPreviewDisplay(holder);
                 mCamera.startPreview();
                 //setCameraDisplayOrientation((Activity) getContext(),1,mCamera);
-
             }
         } catch (IOException e) {
             Log.d(VIEW_LOG_TAG, "Error setting camera preview: " + e.getMessage());
