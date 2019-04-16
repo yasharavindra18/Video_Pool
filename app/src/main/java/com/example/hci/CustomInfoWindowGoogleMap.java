@@ -25,6 +25,7 @@ public class CustomInfoWindowGoogleMap implements GoogleMap.InfoWindowAdapter {
     }
 
 
+
     @Override
     public View getInfoContents(Marker marker) {
         View view = ((Activity)context).getLayoutInflater()
