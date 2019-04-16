@@ -282,12 +282,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             requestCameraPermission();
         } else {
             Log.d(LOG_TAG, "--> Clicked on record view, fetching Events");
-            Intent intnt = new Intent(this, MainActivity.class);
-            intnt.putExtra("EventName", marker.getTitle().toString());
-            intnt.putExtra("EventID", marker.getId().toString());
-            intnt.putExtra("Event_Lat", marker.getPosition().latitude);
-            intnt.putExtra("Event_Long", marker.getPosition().longitude);
-            startActivity(intnt);
+            Intent intent = new Intent(this, MainActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("e_id", marker.getId());
+            bundle.putString("e_name", marker.getTitle());
+            bundle.putDouble("e_lat", marker.getPosition().latitude);
+            bundle.putDouble("e_lng", marker.getPosition().longitude);
+            intent.putExtras(bundle);
+            startActivity(intent);
         }
     }
 
