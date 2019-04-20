@@ -1,0 +1,293 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:2:1-30:12
+INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:2:1-30:12
+INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:2:1-30:12
+INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:2:1-30:12
+MERGED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:2:1-26:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha3] /Users/christian/.gradle/caches/transforms-1/files-1.1/constraintlayout-2.0.0-alpha3.aar/02d0940fab75d1360657c00b88f9a7f1/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat:1.0.2] /Users/christian/.gradle/caches/transforms-1/files-1.1/appcompat-1.0.2.aar/7a1938741b27bc70c573c0a7be8c49b5/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-clearcut:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-clearcut-16.0.0.aar/761f606e41cf9081ecb531009cbbe66c/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-location-16.0.0.aar/4f71bf0fc963ca64f97b73460039552a/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-maps:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-maps-16.1.0.aar/172402cc7532cb488a4af7ecd7919563/AndroidManifest.xml:17:1-38:12
+MERGED from [com.google.android.gms:play-services-phenotype:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-phenotype-16.0.0.aar/3eb1f229c4fbe1c561a66743f6d7809e/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-base:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-16.1.0.aar/9c7d871edf055b3c5ada323f97e7ba5f/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-tasks-16.0.1.aar/ec7fa1e8982ec91f7973d9092713a4e2/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/play-services-places-placereport-16.0.0.aar/738a1d8d2ff2b1249e7539e0c487573d/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-basement:16.2.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-16.2.0.aar/d4a7da5d9b51ceb996eb1730cedd077a/AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/legacy-support-v4-1.0.0.aar/12444519783c4fb0484ca8441f1f67dc/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/fragment-1.0.0.aar/e185bb868c09e6d9a81359be721d0be3/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/vectordrawable-animated-1.0.0.aar/c8bbea0a79dc3a4b0881756f9016219f/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/recyclerview-1.0.0.aar/ebaf43b688187bcfc49e1e2b8adf86d6/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/legacy-support-core-ui-1.0.0.aar/6e6406e3a3307da8f7f59c717c973bd5/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/legacy-support-core-utils-1.0.0.aar/7645847924055b25f28e6be307af7c55/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/vectordrawable-1.0.1.aar/c2276e145549f07baadb8d243f6ca971/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/loader-1.0.0.aar/65aa9a0dcda62e3c41e590efb8ef46dd/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media:media:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/media-1.0.0.aar/82c4cda596902f6f52d258664ad32308/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/viewpager-1.0.0.aar/3f73be4d50947dd7df8a0698521deef0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-1.0.0.aar/25f64e6a0b9f676377712a6bcf760ea3/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/drawerlayout-1.0.0.aar/4af50f8d8b39c170f899a8ade238e7e1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-1.0.0.aar/ffdce34a14c725e76e34837cc71f50d3/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/customview-1.0.0.aar/e7bf05127ddbb3046af29ee2f7f7879a/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-1.0.0.aar/b31bdefd7aa2c61be0b4b9d9c1b20337/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-1.0.0.aar/7df634fdee6b633ba43f4f424dbb1bf0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.0.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/core-1.0.1.aar/f02107b836117f5ae3db6c1aaae19ff9/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/versionedparcelable-1.0.0.aar/0182bc0268bd3eb1fae84bb39062a5d5/AndroidManifest.xml:17:1-25:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/cursoradapter-1.0.0.aar/0653a4f064c7a0c510c166558e2d6abc/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/cardview-1.0.0.aar/e6b68920f8d5b46a988a9e68e1a0a1fb/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/lifecycle-runtime-2.0.0.aar/3016bab72cb61c24024f79d00180eaf2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/documentfile-1.0.0.aar/97fb1b8a75326ca98d4ceda14cb1dfab/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-1.0.0.aar/fe352ce1b41ca72c4b66674e7280bce0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/print-1.0.0.aar/53b18b1f7faf1edd1de50abbf0175193/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/lifecycle-viewmodel-2.0.0.aar/22e247d30cdf951977da9a2a5c43379a/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/lifecycle-livedata-2.0.0.aar/aa2a89d7337a61d3291b9c8ad5a57a5d/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/lifecycle-livedata-core-2.0.0.aar/630e2f33e0414a8fc995deb014d93ddc/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/core-runtime-2.0.0.aar/26ebf73600993ed2be26eb5f883f06f1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/interpolator-1.0.0.aar/692fd49697d82568346ccfb1fa674272/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.bumptech.glide:glide:4.3.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-glide-4.3.1.aar/fb0a0b96b09eec462006e45a943ee946/AndroidManifest.xml:2:1-12:12
+MERGED from [com.android.volley:volley:1.1.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-volley-1.1.1.aar/5bfc2867254f926d4297378e8273c1be/AndroidManifest.xml:2:1-11:12
+INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:2:1-30:12
+INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:2:1-30:12
+INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:2:1-30:12
+	package
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:3:5-37
+		INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:5:5-30
+		INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:4:5-28
+		INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:7:3-65
+MERGED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:11:5-67
+MERGED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:11:5-67
+MERGED from [com.google.android.gms:play-services-maps:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-maps-16.1.0.aar/172402cc7532cb488a4af7ecd7919563/AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-maps-16.1.0.aar/172402cc7532cb488a4af7ecd7919563/AndroidManifest.xml:24:5-67
+	android:name
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:7:20-62
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:8:3-77
+MERGED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:9:5-79
+MERGED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:9:5-79
+	android:name
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:8:20-74
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:9:3-74
+MERGED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:10:5-76
+MERGED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:10:5-76
+	android:name
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:9:20-71
+application
+ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:11:3-29:17
+MERGED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:13:5-24:19
+MERGED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:13:5-24:19
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha3] /Users/christian/.gradle/caches/transforms-1/files-1.1/constraintlayout-2.0.0-alpha3.aar/02d0940fab75d1360657c00b88f9a7f1/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha3] /Users/christian/.gradle/caches/transforms-1/files-1.1/constraintlayout-2.0.0-alpha3.aar/02d0940fab75d1360657c00b88f9a7f1/AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.gms:play-services-clearcut:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-clearcut-16.0.0.aar/761f606e41cf9081ecb531009cbbe66c/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-clearcut:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-clearcut-16.0.0.aar/761f606e41cf9081ecb531009cbbe66c/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-location-16.0.0.aar/4f71bf0fc963ca64f97b73460039552a/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-location-16.0.0.aar/4f71bf0fc963ca64f97b73460039552a/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-maps:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-maps-16.1.0.aar/172402cc7532cb488a4af7ecd7919563/AndroidManifest.xml:30:5-36:19
+MERGED from [com.google.android.gms:play-services-maps:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-maps-16.1.0.aar/172402cc7532cb488a4af7ecd7919563/AndroidManifest.xml:30:5-36:19
+MERGED from [com.google.android.gms:play-services-phenotype:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-phenotype-16.0.0.aar/3eb1f229c4fbe1c561a66743f6d7809e/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-phenotype:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-phenotype-16.0.0.aar/3eb1f229c4fbe1c561a66743f6d7809e/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-base:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-16.1.0.aar/9c7d871edf055b3c5ada323f97e7ba5f/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-16.1.0.aar/9c7d871edf055b3c5ada323f97e7ba5f/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-tasks-16.0.1.aar/ec7fa1e8982ec91f7973d9092713a4e2/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-tasks-16.0.1.aar/ec7fa1e8982ec91f7973d9092713a4e2/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/play-services-places-placereport-16.0.0.aar/738a1d8d2ff2b1249e7539e0c487573d/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/play-services-places-placereport-16.0.0.aar/738a1d8d2ff2b1249e7539e0c487573d/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-basement:16.2.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-16.2.0.aar/d4a7da5d9b51ceb996eb1730cedd077a/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:16.2.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-16.2.0.aar/d4a7da5d9b51ceb996eb1730cedd077a/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.core:core:1.0.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/core-1.0.1.aar/f02107b836117f5ae3db6c1aaae19ff9/AndroidManifest.xml:22:5-89
+MERGED from [androidx.core:core:1.0.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/core-1.0.1.aar/f02107b836117f5ae3db6c1aaae19ff9/AndroidManifest.xml:22:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/versionedparcelable-1.0.0.aar/0182bc0268bd3eb1fae84bb39062a5d5/AndroidManifest.xml:22:5-23:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/versionedparcelable-1.0.0.aar/0182bc0268bd3eb1fae84bb39062a5d5/AndroidManifest.xml:22:5-23:19
+MERGED from [com.github.bumptech.glide:glide:4.3.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-glide-4.3.1.aar/fb0a0b96b09eec462006e45a943ee946/AndroidManifest.xml:10:5-20
+MERGED from [com.github.bumptech.glide:glide:4.3.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-glide-4.3.1.aar/fb0a0b96b09eec462006e45a943ee946/AndroidManifest.xml:10:5-20
+MERGED from [com.android.volley:volley:1.1.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-volley-1.1.1.aar/5bfc2867254f926d4297378e8273c1be/AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.1.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-volley-1.1.1.aar/5bfc2867254f926d4297378e8273c1be/AndroidManifest.xml:9:5-20
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.0.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/core-1.0.1.aar/f02107b836117f5ae3db6c1aaae19ff9/AndroidManifest.xml:22:18-86
+	android:supportsRtl
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:14:7-33
+	android:label
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:13:7-39
+	android:allowBackup
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:12:7-33
+	android:theme
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:15:7-51
+activity#com.example.placesdemo.MainActivity
+ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:17:5-23:16
+	android:name
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:17:15-43
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:18:7-22:23
+action#android.intent.action.MAIN
+ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:19:9-60
+	android:name
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:19:17-58
+category#android.intent.category.LAUNCHER
+ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:21:9-68
+	android:name
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:21:19-66
+activity#com.example.placesdemo.AutocompleteTestActivity
+ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:25:5-57
+	android:name
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:25:15-55
+activity#com.example.placesdemo.PlaceAndPhotoTestActivity
+ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:26:5-58
+	android:name
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:26:15-56
+activity#com.example.placesdemo.CurrentPlaceTestActivity
+ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:27:5-57
+	android:name
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml:27:15-55
+uses-sdk
+INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml
+INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml
+MERGED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:7:5-44
+MERGED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:7:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha3] /Users/christian/.gradle/caches/transforms-1/files-1.1/constraintlayout-2.0.0-alpha3.aar/02d0940fab75d1360657c00b88f9a7f1/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha3] /Users/christian/.gradle/caches/transforms-1/files-1.1/constraintlayout-2.0.0-alpha3.aar/02d0940fab75d1360657c00b88f9a7f1/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat:1.0.2] /Users/christian/.gradle/caches/transforms-1/files-1.1/appcompat-1.0.2.aar/7a1938741b27bc70c573c0a7be8c49b5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.0.2] /Users/christian/.gradle/caches/transforms-1/files-1.1/appcompat-1.0.2.aar/7a1938741b27bc70c573c0a7be8c49b5/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-clearcut:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-clearcut-16.0.0.aar/761f606e41cf9081ecb531009cbbe66c/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-clearcut:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-clearcut-16.0.0.aar/761f606e41cf9081ecb531009cbbe66c/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-location-16.0.0.aar/4f71bf0fc963ca64f97b73460039552a/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-location-16.0.0.aar/4f71bf0fc963ca64f97b73460039552a/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-maps:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-maps-16.1.0.aar/172402cc7532cb488a4af7ecd7919563/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-maps-16.1.0.aar/172402cc7532cb488a4af7ecd7919563/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-phenotype:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-phenotype-16.0.0.aar/3eb1f229c4fbe1c561a66743f6d7809e/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-phenotype:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-phenotype-16.0.0.aar/3eb1f229c4fbe1c561a66743f6d7809e/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-16.1.0.aar/9c7d871edf055b3c5ada323f97e7ba5f/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-16.1.0.aar/9c7d871edf055b3c5ada323f97e7ba5f/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-tasks-16.0.1.aar/ec7fa1e8982ec91f7973d9092713a4e2/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-tasks-16.0.1.aar/ec7fa1e8982ec91f7973d9092713a4e2/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/play-services-places-placereport-16.0.0.aar/738a1d8d2ff2b1249e7539e0c487573d/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/play-services-places-placereport-16.0.0.aar/738a1d8d2ff2b1249e7539e0c487573d/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.2.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-16.2.0.aar/d4a7da5d9b51ceb996eb1730cedd077a/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.2.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-16.2.0.aar/d4a7da5d9b51ceb996eb1730cedd077a/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/legacy-support-v4-1.0.0.aar/12444519783c4fb0484ca8441f1f67dc/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/legacy-support-v4-1.0.0.aar/12444519783c4fb0484ca8441f1f67dc/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/fragment-1.0.0.aar/e185bb868c09e6d9a81359be721d0be3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/fragment-1.0.0.aar/e185bb868c09e6d9a81359be721d0be3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/vectordrawable-animated-1.0.0.aar/c8bbea0a79dc3a4b0881756f9016219f/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/vectordrawable-animated-1.0.0.aar/c8bbea0a79dc3a4b0881756f9016219f/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/recyclerview-1.0.0.aar/ebaf43b688187bcfc49e1e2b8adf86d6/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/recyclerview-1.0.0.aar/ebaf43b688187bcfc49e1e2b8adf86d6/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/legacy-support-core-ui-1.0.0.aar/6e6406e3a3307da8f7f59c717c973bd5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/legacy-support-core-ui-1.0.0.aar/6e6406e3a3307da8f7f59c717c973bd5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/legacy-support-core-utils-1.0.0.aar/7645847924055b25f28e6be307af7c55/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/legacy-support-core-utils-1.0.0.aar/7645847924055b25f28e6be307af7c55/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/vectordrawable-1.0.1.aar/c2276e145549f07baadb8d243f6ca971/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/vectordrawable-1.0.1.aar/c2276e145549f07baadb8d243f6ca971/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/loader-1.0.0.aar/65aa9a0dcda62e3c41e590efb8ef46dd/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/loader-1.0.0.aar/65aa9a0dcda62e3c41e590efb8ef46dd/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/media-1.0.0.aar/82c4cda596902f6f52d258664ad32308/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/media-1.0.0.aar/82c4cda596902f6f52d258664ad32308/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/viewpager-1.0.0.aar/3f73be4d50947dd7df8a0698521deef0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/viewpager-1.0.0.aar/3f73be4d50947dd7df8a0698521deef0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-1.0.0.aar/25f64e6a0b9f676377712a6bcf760ea3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-1.0.0.aar/25f64e6a0b9f676377712a6bcf760ea3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/drawerlayout-1.0.0.aar/4af50f8d8b39c170f899a8ade238e7e1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/drawerlayout-1.0.0.aar/4af50f8d8b39c170f899a8ade238e7e1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-1.0.0.aar/ffdce34a14c725e76e34837cc71f50d3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-1.0.0.aar/ffdce34a14c725e76e34837cc71f50d3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/customview-1.0.0.aar/e7bf05127ddbb3046af29ee2f7f7879a/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/customview-1.0.0.aar/e7bf05127ddbb3046af29ee2f7f7879a/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-1.0.0.aar/b31bdefd7aa2c61be0b4b9d9c1b20337/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-1.0.0.aar/b31bdefd7aa2c61be0b4b9d9c1b20337/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-1.0.0.aar/7df634fdee6b633ba43f4f424dbb1bf0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-1.0.0.aar/7df634fdee6b633ba43f4f424dbb1bf0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/core-1.0.1.aar/f02107b836117f5ae3db6c1aaae19ff9/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/core-1.0.1.aar/f02107b836117f5ae3db6c1aaae19ff9/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/versionedparcelable-1.0.0.aar/0182bc0268bd3eb1fae84bb39062a5d5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/versionedparcelable-1.0.0.aar/0182bc0268bd3eb1fae84bb39062a5d5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/cursoradapter-1.0.0.aar/0653a4f064c7a0c510c166558e2d6abc/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/cursoradapter-1.0.0.aar/0653a4f064c7a0c510c166558e2d6abc/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/cardview-1.0.0.aar/e6b68920f8d5b46a988a9e68e1a0a1fb/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/cardview-1.0.0.aar/e6b68920f8d5b46a988a9e68e1a0a1fb/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/lifecycle-runtime-2.0.0.aar/3016bab72cb61c24024f79d00180eaf2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/lifecycle-runtime-2.0.0.aar/3016bab72cb61c24024f79d00180eaf2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/documentfile-1.0.0.aar/97fb1b8a75326ca98d4ceda14cb1dfab/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/documentfile-1.0.0.aar/97fb1b8a75326ca98d4ceda14cb1dfab/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-1.0.0.aar/fe352ce1b41ca72c4b66674e7280bce0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-1.0.0.aar/fe352ce1b41ca72c4b66674e7280bce0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/print-1.0.0.aar/53b18b1f7faf1edd1de50abbf0175193/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/print-1.0.0.aar/53b18b1f7faf1edd1de50abbf0175193/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/lifecycle-viewmodel-2.0.0.aar/22e247d30cdf951977da9a2a5c43379a/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/lifecycle-viewmodel-2.0.0.aar/22e247d30cdf951977da9a2a5c43379a/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/lifecycle-livedata-2.0.0.aar/aa2a89d7337a61d3291b9c8ad5a57a5d/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/lifecycle-livedata-2.0.0.aar/aa2a89d7337a61d3291b9c8ad5a57a5d/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/lifecycle-livedata-core-2.0.0.aar/630e2f33e0414a8fc995deb014d93ddc/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/lifecycle-livedata-core-2.0.0.aar/630e2f33e0414a8fc995deb014d93ddc/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/core-runtime-2.0.0.aar/26ebf73600993ed2be26eb5f883f06f1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/core-runtime-2.0.0.aar/26ebf73600993ed2be26eb5f883f06f1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/interpolator-1.0.0.aar/692fd49697d82568346ccfb1fa674272/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/interpolator-1.0.0.aar/692fd49697d82568346ccfb1fa674272/AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:glide:4.3.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-glide-4.3.1.aar/fb0a0b96b09eec462006e45a943ee946/AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:glide:4.3.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-glide-4.3.1.aar/fb0a0b96b09eec462006e45a943ee946/AndroidManifest.xml:6:5-8:41
+MERGED from [com.android.volley:volley:1.1.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-volley-1.1.1.aar/5bfc2867254f926d4297378e8273c1be/AndroidManifest.xml:7:5-43
+MERGED from [com.android.volley:volley:1.1.1] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-volley-1.1.1.aar/5bfc2867254f926d4297378e8273c1be/AndroidManifest.xml:7:5-43
+INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml
+INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml
+		ADDED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/christian/Downloads/android-places-demos-master-2/demo/app/src/main/AndroidManifest.xml
+activity#com.google.android.libraries.places.widget.AutocompleteActivity
+ADDED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:16:9-23:20
+	android:label
+		ADDED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:20:13-62
+	android:hardwareAccelerated
+		ADDED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:19:13-47
+	android:windowSoftInputMode
+		ADDED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:22:13-71
+	android:exported
+		ADDED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:18:13-37
+	android:theme
+		ADDED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:21:13-66
+	android:name
+		ADDED from [com.google.android.libraries.places:places:1.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-places-1.1.0.aar/10e9435eaebc6fea8972cab3d6eb5397/AndroidManifest.xml:17:13-91
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.android.gms:play-services-maps:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-maps-16.1.0.aar/172402cc7532cb488a4af7ecd7919563/AndroidManifest.xml:23:5-79
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-maps-16.1.0.aar/172402cc7532cb488a4af7ecd7919563/AndroidManifest.xml:23:22-76
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-maps-16.1.0.aar/172402cc7532cb488a4af7ecd7919563/AndroidManifest.xml:26:5-28:35
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-maps-16.1.0.aar/172402cc7532cb488a4af7ecd7919563/AndroidManifest.xml:27:9-41
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-maps-16.1.0.aar/172402cc7532cb488a4af7ecd7919563/AndroidManifest.xml:28:9-32
+uses-library#org.apache.http.legacy
+ADDED from [com.google.android.gms:play-services-maps:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-maps-16.1.0.aar/172402cc7532cb488a4af7ecd7919563/AndroidManifest.xml:33:9-35:40
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-maps-16.1.0.aar/172402cc7532cb488a4af7ecd7919563/AndroidManifest.xml:35:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-maps-16.1.0.aar/172402cc7532cb488a4af7ecd7919563/AndroidManifest.xml:34:13-50
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-16.1.0.aar/9c7d871edf055b3c5ada323f97e7ba5f/AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-16.1.0.aar/9c7d871edf055b3c5ada323f97e7ba5f/AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-16.1.0.aar/9c7d871edf055b3c5ada323f97e7ba5f/AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:16.1.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-16.1.0.aar/9c7d871edf055b3c5ada323f97e7ba5f/AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:16.2.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-16.2.0.aar/d4a7da5d9b51ceb996eb1730cedd077a/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:16.2.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-16.2.0.aar/d4a7da5d9b51ceb996eb1730cedd077a/AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:16.2.0] /Users/christian/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-16.2.0.aar/d4a7da5d9b51ceb996eb1730cedd077a/AndroidManifest.xml:24:13-58
